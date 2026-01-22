@@ -1,0 +1,24 @@
+name: Check Required Tools
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-tools:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check zip
+        run: |
+          command -v zip || { echo "zip is NOT installed"; exit 1; }
+
+      - name: Check jq
+        run: |
+          command -v jq || { echo "jq is NOT installed"; exit 1; }
+
+      - name: Check docker
+        run: |
+          command -v docker || { echo "docker is NOT installed"; exit 1; }
+
+      - name: All tools present
+        run: echo "zip, jq, and docker are installed"
